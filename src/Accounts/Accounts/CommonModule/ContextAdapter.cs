@@ -19,7 +19,6 @@ using System.Net.Http;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-using Microsoft.Azure.Commands.Common.Utilities;
 using Microsoft.Azure.Commands.Profile.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -27,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Azure.Identity;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -45,6 +44,8 @@ namespace Microsoft.Azure.Commands.Common
         private readonly IAuthenticationFactory _authenticator = AzureSession.Instance.AuthenticationFactory;
 
         internal static ContextAdapter Instance => new ContextAdapter();
+
+        private const string _subscription = "/subscriptions/default";
 
         /// <summary>
         /// The name of the selected profile
@@ -74,7 +75,12 @@ namespace Microsoft.Azure.Commands.Common
         public void OnNewRequest(InvocationInfo invocationInfo, string correlationId, string processRecordId, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
         {
             appendStep(new UserAgent(invocationInfo).SendAsync);
-            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ResourceManager));
+        }
+
+        public void OnNewProxyRequest(PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
+        {
+            appendStep(this.SendHandler(_provider?.Profile?.DefaultContext, AzureEnvironment.Endpoint.ResourceManager));
         }
 
         internal void AddRequestUserAgentHandler(
@@ -115,9 +121,10 @@ namespace Microsoft.Azure.Commands.Common
             appendStep(
                 async (request, cancelToken, cancelAction, signal, next) =>
                 {
-                    endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
+                    endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ResourceManager;
                     var context = GetDefaultContext(_provider, invocationInfo);
-                    return await AuthenticationHelper(context, endpointResourceIdKey, endpointSuffixKey, request, cancelToken, cancelAction, signal, next);
+                    await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
+                    return await next(request, cancelToken, cancelAction, signal);
                 });
         }
 
@@ -127,9 +134,9 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="completerName">string - the type of completer requested (Resource, Location)</param>
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="correlationId">The <see cref="string" /> containing the correlation id for the cmdlet (if available)</param>
-        /// <param name="resourceTypes">An <see cref="System.String"/>[] containing resource (or resource types) being completed  </param >
-        /// <param name="parentResourceParameterNames"> An <see cref="System.String"/>[] containing list of parent resource parameter names (if applicable)</param >
-        /// <returns>A <see cref="System.String"/>[] containing the valid options for the completer.</returns>
+        /// <param name="resourceTypes">An <see cref="System.String[]"/> containing resource (or resource types) being completed  </param >
+        /// <param name="parentResourceParameterNames"> An <see cref="System.String[]"/> containing list of parent resource parameter names (if applicable)</param >
+        /// <returns>A <see cref="System.String[]"/> containing the valid options for the completer.</returns>
         public string[] CompleteArgument(string completerName, InvocationInfo invocationInfo, string correlationId, string[] resourceTypes, string[] parentResourceParameterNames)
         {
             var defaultValue = new string[0];
@@ -192,40 +199,6 @@ namespace Microsoft.Azure.Commands.Common
             return string.Empty;
         }
 
-        internal async Task<HttpResponseMessage> AuthenticationHelper(IAzureContext context, string endpointResourceIdKey, string endpointSuffixKey, HttpRequestMessage request, CancellationToken cancelToken, Action cancelAction, SignalDelegate signal, NextDelegate next, TokenAudienceConverterDelegate tokenAudienceConverter = null)
-        {
-            IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
-            using (var newRequest = await request.CloneWithContent(request.RequestUri, request.Method))
-            {
-                var response = await next(request, cancelToken, cancelAction, signal);
-
-                if (response.MatchClaimsChallengePattern())
-                {
-                    //get token again with claims challenge
-                    if (accessToken is IClaimsChallengeProcessor processor)
-                    {
-                        try
-                        {
-                            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
-                            if (!string.IsNullOrEmpty(claimsChallenge))
-                            {
-                                await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
-                                using (var previousReponse = response)
-                                {
-                                    response = await next(newRequest, cancelToken, cancelAction, signal);
-                                }
-                            }
-                        }
-                        catch (AuthenticationFailedException e)
-                        {
-                            throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
-                        }
-                    }
-                }
-                return response;
-            }
-        }
-
         /// <summary>
         /// 
         /// </summary>
@@ -237,7 +210,8 @@ namespace Microsoft.Azure.Commands.Common
             return async (request, cancelToken, cancelAction, signal, next) =>
             {
                 PatchRequestUri(context, request);
-                return await AuthenticationHelper(context, resourceId, resourceId, request, cancelToken, cancelAction, signal, next);
+                await AuthorizeRequest(context, request, cancelToken, resourceId, resourceId);
+                return await next(request, cancelToken, cancelAction, signal);
             };
         }
 
@@ -247,12 +221,9 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="context"></param>
         /// <param name="endpointResourceIdKey"></param>
         /// <param name="request"></param>
-        /// <param name="endpointSuffixKey"></param>
-        /// <param name="extensibleParamters"></param>
-        /// <param name="tokenAudienceConverter"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="outerToken"></param>
         /// <returns></returns>
-        internal async Task<IAccessToken> AuthorizeRequest(IAzureContext context, HttpRequestMessage request, CancellationToken cancellationToken, string endpointResourceIdKey,
+        internal async Task AuthorizeRequest(IAzureContext context, HttpRequestMessage request, CancellationToken outerToken, string endpointResourceIdKey,
                         string endpointSuffixKey, TokenAudienceConverterDelegate tokenAudienceConverter = null, IDictionary<string, object> extensibleParamters = null)
         {
             if (context == null || context.Account == null || context.Environment == null)
@@ -260,7 +231,7 @@ namespace Microsoft.Azure.Commands.Common
                 throw new InvalidOperationException(Resources.InvalidAzureContext);
             }
 
-            return await Task.Run(() =>
+            await Task.Run(() =>
             {
                 if (tokenAudienceConverter != null)
                 {
@@ -270,8 +241,7 @@ namespace Microsoft.Azure.Commands.Common
                 }
                 var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, endpointResourceIdKey);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
-                return authToken;
-            }, cancellationToken);
+            }, outerToken);
         }
 
         private (string CurEnvEndpointResourceId, string CurEnvEndpointSuffix, string BaseEnvEndpointResourceId, string BaseEnvEndpointSuffix) GetEndpointInfo(IAzureEnvironment environment, string endpointResourceIdKey, string endpointSuffixKey)
@@ -288,8 +258,19 @@ namespace Microsoft.Azure.Commands.Common
 
         internal void PatchRequestUri(IAzureContext context, HttpRequestMessage request)
         {
+            PatchDefaultSubscription(context, request);
             var requestUri = context?.Environment?.GetUriFromBaseRequestUri(request.RequestUri);
             request.RequestUri = requestUri ?? request.RequestUri;
+        }
+
+        internal void PatchDefaultSubscription(IAzureContext context, HttpRequestMessage request)
+        {
+            string uri = request.RequestUri.ToString();
+            if (uri.Contains(_subscription)) {
+                string value = $"/subscriptions/{context.Subscription.Id}";
+                uri = uri.Replace(_subscription, value);
+                request.RequestUri = new System.Uri(uri);
+            }
         }
 
         /// <summary>
