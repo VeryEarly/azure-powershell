@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// </returns>
         internal async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.ICloudError> response)
         {
-
+            
         }
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>

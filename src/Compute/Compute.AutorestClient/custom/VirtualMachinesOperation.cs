@@ -8,10 +8,7 @@ using global::System.Linq;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 {
-    using OnDefault = global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task>;
-    using OnOkGet = global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine>, global::System.Threading.Tasks.Task>;
-
-    public class ActivityLogAlertsOperations
+    public class VirtualMachinesOperations
     {
         private Microsoft.Azure.PowerShell.Cmdlets.Compute.ProxyClient _client;
 
@@ -21,23 +18,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
             _client = client;
         }
 
-        public async global::System.Threading.Tasks.Task<Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine> GetAsync(string resourceGroupName, string activityLogAlertName)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine> GetAsync(string resourceGroupName, string virtualMachineName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.InstanceViewTypes? expand)
         {
             using(NoSynchronizationContext)
             using(Microsoft.Azure.PowerShell.Cmdlets.Compute.Operation<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine> op = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Operation<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine>())
             {
-                OnOkGet onOk = op.onOk;
-                OnDefault onDefault = op.onDefault;
                 Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener = Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ProxyEventListener.CreateProxyEventListener();
-            Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender = Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.CreateProxyPipeline();
-                await Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.ClientAPI.ActivityLogAlertsGet(Client.SubscriptionId, resourceGroupName, activityLogAlertName, onOk, onDefault, eventListener, sender);
+                Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender = Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.CreateProxyPipeline();
+                await Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.ClientAPI.VirtualMachinesGet(resourceGroupName, virtualMachineName, null, Client.SubscriptionId, op.onOk, op.onDefault, eventListener, sender);
                 return op.Result;
             }
         }
 
-        public Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine Get(string resourceGroupName, string activityLogAlertName)
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine Get(string resourceGroupName, string virtualMachineName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.InstanceViewTypes? expand)
         {
-            return GetAsync(resourceGroupName, activityLogAlertName).GetAwaiter().GetResult();
+            return GetAsync(resourceGroupName, virtualMachineName, expand).GetAwaiter().GetResult();
+        }
+
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine> CreateOrUpdateAsync(string resourceGroupName, string virtualMachineName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine parameters)
+        {
+            using(NoSynchronizationContext)
+            using(Microsoft.Azure.PowerShell.Cmdlets.Compute.Operation<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine> op = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Operation<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine>())
+            {
+                Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener = Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ProxyEventListener.CreateProxyEventListener();
+                Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender = Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.CreateProxyPipeline();
+                await Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.ClientAPI.VirtualMachinesCreateOrUpdate(resourceGroupName, virtualMachineName, Client.SubscriptionId, parameters, op.onOk, op.onDefault, eventListener, sender);
+                return op.Result;
+            }
+        }
+
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine CreateOrUpdate(string resourceGroupName, string virtualMachineName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220301.IVirtualMachine parameters)
+        {
+            return CreateOrUpdateAsync(resourceGroupName, virtualMachineName, parameters).GetAwaiter().GetResult();
         }
     }
 }
