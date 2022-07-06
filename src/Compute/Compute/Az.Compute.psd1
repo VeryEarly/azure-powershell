@@ -60,7 +60,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.0'; })
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll', 
                'Microsoft.WindowsAzure.Storage.dll', 
                'Compute.Autorest\bin\Az.Compute.private.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.dll'
+               'Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.dll',
+               'ComputeClient.Autorest\bin\Az.ComputeClient.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -75,7 +76,7 @@ FormatsToProcess = 'Compute.format.ps1xml', 'Compute.generated.format.ps1xml',
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Compute.dll', 
-               'Compute.Autorest\Az.Compute.psm1')
+               'Compute.Autorest\Az.Compute.psm1', 'ComputeClient.Autorest\Az.ComputeClient.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzGalleryApplication', 'Get-AzGalleryApplicationVersion', 
