@@ -67,7 +67,7 @@
   # Allows shared module to listen to events from this module
   $instance.EventListener = $VTable.EventListener
 
-  $instance.EventListenerWithoutTelemetryDelegate = $VTable.EventListenerWithoutTelemetryDelegate
+  $instance.EventListenerWithoutTelemetry = $VTable.EventListenerWithoutTelemetry
   
   # Gets shared argument completers
   $instance.ArgumentCompleter = $VTable.ArgumentCompleter
