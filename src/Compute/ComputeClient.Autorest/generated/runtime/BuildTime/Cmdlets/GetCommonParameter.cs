@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell
 {
   [Cmdlet(VerbsCommon.Get, "CommonParameter")]
   [OutputType(typeof(Dictionary<string, object>))]

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell
 {
     internal static class PsExtensions
     {

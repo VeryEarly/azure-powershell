@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.Json
 {
     internal class JsonWriter
     {

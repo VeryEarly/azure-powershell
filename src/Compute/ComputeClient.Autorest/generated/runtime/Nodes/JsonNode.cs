@@ -6,7 +6,7 @@
 using System.IO;
 using System.Text;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.Json
 {
     
 

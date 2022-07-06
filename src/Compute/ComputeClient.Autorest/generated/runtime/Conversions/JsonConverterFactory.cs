@@ -5,7 +5,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.Json
 {
     public sealed class JsonConverterFactory
     {

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class DescriptionAttribute : Attribute

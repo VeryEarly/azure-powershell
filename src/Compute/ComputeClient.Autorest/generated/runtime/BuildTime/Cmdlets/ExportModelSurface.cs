@@ -10,7 +10,7 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Text;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell
 {
   [Cmdlet(VerbsData.Export, "ModelSurface")]
   [DoNotExport]
@@ -23,8 +23,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
     [Parameter]
     public bool UseExpandedFormat { get; set; }
 
-    private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Compute.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Compute.Support";
+    private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models";
+    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Support";
 
     protected override void ProcessRecord()
     {

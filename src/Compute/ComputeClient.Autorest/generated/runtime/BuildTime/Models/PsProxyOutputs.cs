@@ -8,10 +8,10 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Text.RegularExpressions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.PsProxyOutputExtensions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.PsProxyTypeExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell.PsProxyOutputExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell.PsProxyTypeExtensions;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell
 {
     internal class OutputTypeOutput
     {
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
 
         public string GetProcessCustomAttributesAtRuntime()
         {
-            return VariantGroup.IsInternal ? "" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
+            return VariantGroup.IsInternal ? "" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
         }
         private string GetTelemetry()
         {
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
 {Indent}{Indent}$preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
 {Indent}{Indent}if ($preTelemetryId -eq '') {{
 {Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Compute.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
 {Indent}{Indent}}} else {{
 {Indent}{Indent}{Indent}$internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
 {Indent}{Indent}{Indent}if ($internalCalledCmdlets -eq '') {{
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
 {Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
 {Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
 {Indent}{Indent}if ($preTelemetryId -eq '') {{
-{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Compute.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
 {Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
 {Indent}{Indent}}}
 {Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

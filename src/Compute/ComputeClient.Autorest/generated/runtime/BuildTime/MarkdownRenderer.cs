@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.MarkdownTypesExtensions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.PsProxyOutputExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell.MarkdownTypesExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell.PsProxyOutputExtensions;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell
 {
     internal static class MarkdownRenderer
     {

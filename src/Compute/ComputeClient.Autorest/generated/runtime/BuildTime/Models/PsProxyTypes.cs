@@ -8,10 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
-using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.PsProxyOutputExtensions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.PsProxyTypeExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell.PsProxyOutputExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell.PsProxyTypeExtensions;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell
 {
     internal class ProfileGroup
     {

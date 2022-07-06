@@ -6,7 +6,7 @@
 using System.Globalization;
 using System.IO;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.Json
 {
     public sealed class SourceReader : IDisposable
     {

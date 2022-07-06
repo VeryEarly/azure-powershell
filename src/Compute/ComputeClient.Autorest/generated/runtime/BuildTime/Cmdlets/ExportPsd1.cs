@@ -8,9 +8,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Text.RegularExpressions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.PsHelpers;
+using static Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell.PsHelpers;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell
 {
     [Cmdlet(VerbsData.Export, "Psd1")]
     [DoNotExport]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
                 var sb = new StringBuilder();
                 sb.AppendLine("@{");
                 sb.AppendLine($@"{GuidStart} = '{ModuleGuid}'");
-                sb.AppendLine($@"{Indent}RootModule = '{"./Az.Compute.psm1"}'");
+                sb.AppendLine($@"{Indent}RootModule = '{"./Az.ComputeClient.psm1"}'");
                 sb.AppendLine($@"{Indent}ModuleVersion = '{version}'");
                 sb.AppendLine($@"{Indent}CompatiblePSEditions = 'Core', 'Desktop'");
                 sb.AppendLine($@"{Indent}Author = '{"Microsoft Corporation"}'");
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
                 }
                 else
                 {
-                    sb.AppendLine($@"{Indent}RequiredAssemblies = '{"./bin/Az.Compute.private.dll"}'");
+                    sb.AppendLine($@"{Indent}RequiredAssemblies = '{"./bin/Az.ComputeClient.private.dll"}'");
                 }
 
                 // NestedModules
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
                     var customFormatPs1xmlFiles = Directory.GetFiles(CustomFolder)
                         .Where(f => f.EndsWith(".format.ps1xml"))
                         .Select(f => $"{CustomFolderRelative}/{Path.GetFileName(f)}");
-                    var formatList = customFormatPs1xmlFiles.Prepend("./Az.Compute.format.ps1xml").ToPsList();
+                    var formatList = customFormatPs1xmlFiles.Prepend("./Az.ComputeClient.format.ps1xml").ToPsList();
                     sb.AppendLine($@"{Indent}FormatsToProcess = {formatList}");
                 }
 

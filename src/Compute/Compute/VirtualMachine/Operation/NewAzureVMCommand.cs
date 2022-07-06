@@ -55,7 +55,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
-    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
+    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachineV2))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VM { get; set; }
+        public PSVirtualMachineV2 VM { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -784,21 +784,18 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (storageUri != null)
                 {
-                    this.VM.DiagnosticsProfile = new DiagnosticsProfile
+                    this.VM.DiagnosticsProfile = new Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.DiagnosticsProfile
                     {
-                        BootDiagnostics = new BootDiagnostics
-                        {
-                            Enabled = true,
-                            StorageUri = storageUri.ToString(),
-                        }
+                        BootDiagnosticEnabled = true,
+                        BootDiagnosticStorageUri = storageUri.ToString()
                     };
                 }
             }
 
-            CM.ExtendedLocation ExtendedLocation = null;
+            Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.ExtendedLocation ExtendedLocation = null;
             if (this.EdgeZone != null)
             {
-                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                ExtendedLocation = new Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.ExtendedLocation { Name = this.EdgeZone, Type = Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Support.ExtendedLocationTypes.EdgeZone };
             }
 
             // Guest Attestation extension defaulting scenario check.
@@ -807,53 +804,57 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM != null &&
                 this.VM.Identity == null)
             {
-                this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+                this.VM.Identity = new Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.VirtualMachineIdentity
+                {
+                    Type = Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Support.ResourceIdentityType.SystemAssigned
+                };
             }
-
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
                 {
-                    var parameters = new VirtualMachine
+                    var parameters = new Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.VirtualMachine
                     {
-                        DiagnosticsProfile = this.VM.DiagnosticsProfile,
-                        HardwareProfile = this.VM.HardwareProfile,
-                        StorageProfile = this.VM.StorageProfile,
-                        NetworkProfile = this.VM.NetworkProfile,
-                        OsProfile = this.VM.OSProfile,
+                        Property = new Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.VirtualMachineProperties
+                        {
+                            DiagnosticsProfile = this.VM.DiagnosticsProfile,
+                            HardwareProfile = this.VM.HardwareProfile,
+                            StorageProfile = this.VM.StorageProfile,
+                            NetworkProfile = this.VM.NetworkProfile,
+                            OSProfile = this.VM.OSProfile,
+                            LicenseType = this.LicenseType ?? this.VM.LicenseType,
+                            AvailabilitySet = this.VM.AvailabilitySetReference,
+                            ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
+                            Host = this.VM.Host,
+                            VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                            AdditionalCapability = this.VM.AdditionalCapabilities,
+                            Priority = this.VM.Priority,
+                            EvictionPolicy = this.VM.EvictionPolicy,
+                            BillingProfile = this.VM.BillingProfile,
+                            SecurityProfile = this.VM.SecurityProfile,
+                            CapacityReservation = this.VM.CapacityReservation,
+                            UserData = this.VM.UserData,
+                            PlatformFaultDomain = this.VM.PlatformFaultDomain
+                        },
                         Plan = this.VM.Plan,
-                        LicenseType = this.LicenseType ?? this.VM.LicenseType,
-                        AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
-                        ExtendedLocation = ExtendedLocation,
-                        Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
-                        Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
-                        Zones = this.Zone ?? this.VM.Zones,
-                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
-                        Host = this.VM.Host,
-                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
-                        AdditionalCapabilities = this.VM.AdditionalCapabilities,
-                        Priority = this.VM.Priority,
-                        EvictionPolicy = this.VM.EvictionPolicy,
-                        BillingProfile = this.VM.BillingProfile,
-                        SecurityProfile = this.VM.SecurityProfile,
-                        CapacityReservation = this.VM.CapacityReservation,
-                        UserData = this.VM.UserData,
-                        PlatformFaultDomain = this.VM.PlatformFaultDomain
+                        Tag = new Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.ResourceTags(),
+                        Identity = this.VM.Identity,
+                        ExtendedLocation = ExtendedLocation
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
-                    if (!string.IsNullOrEmpty(parameters.StorageProfile?.ImageReference?.Id))
+                    if (!string.IsNullOrEmpty(parameters.Property.StorageProfile?.ImageReferenceId))
                     {
-                        var resourceId = ResourceId.TryParse(parameters.StorageProfile.ImageReference.Id);
+                        var resourceId = ResourceId.TryParse(parameters.Property.StorageProfile.ImageReferenceId);
 
                         if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
                          && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
                          && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
                         {
                             List<string> resourceIds = new List<string>();
-                            resourceIds.Add(parameters.StorageProfile.ImageReference.Id);
+                            resourceIds.Add(parameters.Property.StorageProfile.ImageReferenceId);
                             var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
                             if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
                             {
@@ -862,20 +863,21 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    Rest.Azure.AzureOperationResponse<VirtualMachine> result;
+                    Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.IVirtualMachine result;
 
                     if (this.IsParameterBound(c => c.SshKeyName))
                     {
-                        parameters = addSshPublicKey(parameters);
+                        //parameters = addSshPublicKey(parameters);
                     }
 
                     try
                     {
-                        result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.VM.Name,
-                        parameters,
-                        auxAuthHeader).GetAwaiter().GetResult();
+                        // result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                        // this.ResourceGroupName,
+                        // this.VM.Name,
+                        // parameters,
+                        // auxAuthHeader).GetAwaiter().GetResult();
+                        result = new Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.ProxyClient(this).VirtualMachines.CreateOrUpdate(this.ResourceGroupName, this.VM.Name, parameters);
                     }
                     catch (Exception ex)
                     {
@@ -972,9 +974,8 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM != null &&
                     this.VM.SecurityProfile != null &&
                     this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
-                    this.VM.SecurityProfile.UefiSettings != null &&
-                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
-                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
+                    this.VM.SecurityProfile.UefiSettingSecureBootEnabled == true &&
+                    this.VM.SecurityProfile.UefiSettingVTpmEnabled == true)
             {
                 return true;
             }
@@ -1070,14 +1071,13 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             if ((this.VM.StorageProfile != null)
-                && (this.VM.StorageProfile.OsDisk != null)
-                && (this.VM.StorageProfile.OsDisk.OsType != null))
+                && (this.VM.StorageProfile.OSDisk != null)
+                && (this.VM.StorageProfile.OSDisk.OSType != null))
             {
-                return (this.VM.StorageProfile.OsDisk.OsType.Equals(OperatingSystemTypes.Linux));
+                return (this.VM.StorageProfile.OSDisk.OSType.Equals(OperatingSystemTypes.Linux));
             }
 
-            return ((this.VM.OSProfile != null)
-                    && (this.VM.OSProfile.LinuxConfiguration != null));
+            return ((this.VM.OSProfile != null));
         }
 
         private string GetOrCreateStorageAccountForBootDiagnostics()
@@ -1128,14 +1128,13 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (this.VM == null
                 || this.VM.StorageProfile == null
-                || this.VM.StorageProfile.OsDisk == null
-                || this.VM.StorageProfile.OsDisk.Vhd == null
-                || this.VM.StorageProfile.OsDisk.Vhd.Uri == null)
+                || this.VM.StorageProfile.OSDisk == null
+                || this.VM.StorageProfile.OSDisk.VhdUri == null)
             {
                 return null;
             }
 
-            return GetStorageAccountNameFromUriString(this.VM.StorageProfile.OsDisk.Vhd.Uri);
+            return GetStorageAccountNameFromUriString(this.VM.StorageProfile.OSDisk.VhdUri);
         }
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)

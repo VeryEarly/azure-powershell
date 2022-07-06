@@ -22,13 +22,13 @@ if(-not $Isolated) {
   return
 }
 
-$dll = Join-Path $PSScriptRoot 'bin\Az.Compute.private.dll'
+$dll = Join-Path $PSScriptRoot 'bin\Az.ComputeClient.private.dll'
 if(-not (Test-Path $dll)) {
   Write-Error "Unable to find output assembly in '$binFolder'."
 }
 $null = Import-Module -Name $dll
 
-$moduleName = 'Az.Compute'
+$moduleName = 'Az.ComputeClient'
 $exportsFolder = Join-Path $PSScriptRoot 'exports'
 $resourcesFolder = Join-Path $PSScriptRoot 'resources'
 

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Runtime.PowerShell
 {
   [Cmdlet(VerbsData.Export, "FormatPs1xml")]
   [DoNotExport]
@@ -19,8 +19,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
     [ValidateNotNullOrEmpty]
     public string FilePath { get; set; }
 
-    private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Compute.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Compute.Support";
+    private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models";
+    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Support";
     private const string PropertiesExcludedForTableview = @"Id,Type";
 
     private static readonly bool IsAzure = Convert.ToBoolean(@"true");

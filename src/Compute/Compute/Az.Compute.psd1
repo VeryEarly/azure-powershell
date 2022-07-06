@@ -194,7 +194,8 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'New-AzVmGalleryApplication', 'New-AzVmssGalleryApplication', 
                'Add-AzVmGalleryApplication', 'Add-AzVmssGalleryApplication', 
                'Remove-AzVmGalleryApplication', 'Remove-AzVmssGalleryApplication', 
-               'Add-AzVmssRunCommand', 'Remove-AzVmssRunCommand'
+               'Add-AzVmssRunCommand', 'Remove-AzVmssRunCommand',
+               'New-AzVMV2'
 
 # Variables to export from this module
 # VariablesToExport = @()
