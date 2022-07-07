@@ -954,7 +954,7 @@ namespace Microsoft.Azure.Commands.Compute
                             ).GetAwaiter().GetResult();
                     }
 
-                    WriteObject(psResult);
+                    WriteObject(result);
                 });
             }
         }
