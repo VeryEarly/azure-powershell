@@ -841,7 +841,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Location = this.Location ?? this.VM.Location,
                         Tag = new Microsoft.Azure.PowerShell.Cmdlets.ComputeClient.Models.Api20220301.ResourceTags(),
                         Identity = this.VM.Identity,
-                        ExtendedLocation = ExtendedLocation
+                        ExtendedLocation = this.VM.ExtendedLocation
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
