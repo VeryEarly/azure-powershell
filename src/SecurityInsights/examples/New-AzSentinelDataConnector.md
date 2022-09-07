@@ -1,10 +1,22 @@
-<<<<<<< HEAD
-### Example 1: Enables the Threat Intelligence data connector
-=======
-### Example 1: Enable a data connector.
->>>>>>> 16ff7bb8ad... Fixes per feedback
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
+{{ Add code here }}
 ```
 
-This command enables the Threat Intelligence data connector
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

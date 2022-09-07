@@ -36,39 +36,27 @@ Gets an incident.
 
 ## EXAMPLES
 
-### Example 1: List all Incidents
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+{{ Add code here }}
 ```
 
 ```output
-Title        	: (Preview) TI map IP entity to AzureActivity
-Description  	: Identifies a match in AzureActivity from any IP IOC from TI
-Severity     	: Medium
-Number      	: 754
-Label        	: {}
-ProviderName  : Azure Sentinel
-Name         	: f5409f55-7dd8-4c73-9981-4627520b2db
+{{ Add output here }}
 ```
 
-This command lists all Incidents under a Microsoft Sentinel workspace.
+{{ Add description here }}
 
-### Example 2: Get an Incident
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "f5409f55-7dd8-4c73-9981-4627520b2db"
+{{ Add code here }}
 ```
 
 ```output
-Title        	: (Preview) TI map IP entity to AzureActivity
-Description  	: Identifies a match in AzureActivity from any IP IOC from TI
-Severity     	: Medium
-Number      	: 754
-Label        	: {}
-ProviderName  : Azure Sentinel
-Name         	: f5409f55-7dd8-4c73-9981-4627520b2db
+{{ Add output here }}
 ```
 
-This command gets an Incident.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -249,7 +237,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

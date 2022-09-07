@@ -22,18 +22,27 @@ Gets all incident related entities.
 
 ## EXAMPLES
 
-### Example 1: List all Entities for a given Incident
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelIncidentEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "0ddb580f-efd0-4076-bb77-77e9aef8a187"
+{{ Add code here }}
 ```
 
 ```output
-FriendlyName : win2019
-Kind         : Host
-Name         : cb577adf-0266-8873-84d7-accf4b45417b
+{{ Add output here }}
 ```
 
-This command lists all Entities for a given Incident.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

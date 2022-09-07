@@ -1,6 +1,22 @@
-### Example 1: Update an Entity Query
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -EntityQueryId "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -Title "myEntityQuery Title"
+{{ Add code here }}
 ```
 
-This command updates an entity query.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

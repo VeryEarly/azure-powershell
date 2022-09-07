@@ -1,6 +1,22 @@
-### Example 1: Create an Incident Comment
+### Example 1: {{ Add title here }}
 ```powershell
- New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Message "IncidentCommentGoesHere"
+{{ Add code here }}
 ```
 
-This command creates an Incident Comment.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

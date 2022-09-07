@@ -35,60 +35,27 @@ Gets a setting.
 
 ## EXAMPLES
 
-### Example 1: List all Settings
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+{{ Add code here }}
 ```
 
 ```output
-Kind      : EntityAnalytics
-Name      : EntityAnalytics
-IsEnabled : True
-
-Kind      : EyesOn
-Name      : EyesOn
-IsEnabled : True
-
-Kind : IPSyncer
-Name : IPSyncer
-
-Kind      : Anomalies
-Name      : Anomalies
-IsEnabled : True
-
-Kind       : Ueba
-Name       : Ueba
-DataSource : {AuditLogs, AzureActivity, SecurityEvent, SigninLogs}
+{{ Add output here }}
 ```
 
-This command lists all Settings under a Microsoft Sentinel workspace.
+{{ Add description here }}
 
-### Example 2: Get a Setting
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName "Anomalies"
+{{ Add code here }}
 ```
 
 ```output
-Kind      : Anomalies
-Name      : Anomalies
-IsEnabled : True
+{{ Add output here }}
 ```
 
-This command gets a Setting.
-
-### Example 3: Get a Setting by object Id
-```powershell
- $Settings = Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
- $Settings[0] | Get-AzSentinelSetting
-```
-
-```output
-Kind      : Anomalies
-Name      : Anomalies
-IsEnabled : True
-```
-
-This command gets a Setting by object
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -205,7 +172,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

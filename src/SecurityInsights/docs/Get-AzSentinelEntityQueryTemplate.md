@@ -35,55 +35,27 @@ Gets an entity query.
 
 ## EXAMPLES
 
-### Example 1: List all Entity Query Templates
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+{{ Add code here }}
 ```
 
 ```output
-Title           : The user has created an account
-Description     : This activity displays account creation events performed by the user
-InputEntityType : Account
-Kind            : Activity
-Name            : d6d08c94-455f-4ea5-8f76-fc6c0c442cfa
-
-Title           : The user has deleted an account
-Description     : This activity displays account deletion events performed by the user
-InputEntityType : Account
-Kind            : Activity
-Name            : e0459780-ac9d-4b72-8bd4-fecf6b46a0a1
+{{ Add output here }}
 ```
 
-This command lists all Entity Query Templates under a Microsoft Sentinel workspace.
+{{ Add description here }}
 
-### Example 2: Get an Entity Query Template
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "d6d08c94-455f-4ea5-8f76-fc6c0c442cfa"
+{{ Add code here }}
 ```
 
 ```output
-Description     : This activity displays account creation events performed by the user
-InputEntityType : Account
-Kind            : Activity
-Name            : d6d08c94-455f-4ea5-8f76-fc6c0c442cfa
+{{ Add output here }}
 ```
 
-This command gets an Entity Query Template.
-
-### Example 3: Get an Entity Query Template by object Id
-```powershell
- $EntityQueryTemplates = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
- $EntityQueryTemplates[0] | Get-AzSentinelEntityQueryTemplate
-```
-
-```output
-Description     : This activity displays account creation events performed by the user
-InputEntityType : Account
-Kind            : Activity
-Name            : d6d08c94-455f-4ea5-8f76-fc6c0c442cfa
-```
-
-This command gets a Entity Query Template by object.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -214,7 +186,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

@@ -1,7 +1,22 @@
-### Example 1: Remove a bookmark relation
+### Example 1: {{ Add title here }}
 ```powershell
- Remove-AzSentinelBookmarkRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -BookmarkId 83846045-d8dc-4d6b-abbe-7588219c474e -RelationName 7cc984fe-61a2-43c2-a1a4-3583c8a89da2
+{{ Add code here }}
 ```
 
-This command removes a bookmarkrelation
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

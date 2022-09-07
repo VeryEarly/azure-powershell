@@ -1,13 +1,22 @@
-### Example 1: Updates an automation rule
+### Example 1: {{ Add title here }}
 ```powershell
- $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
- $automationRuleAction.Order = 1
- $automationRuleAction.ActionType = "RunPlaybook"
- $automationRuleAction.ActionConfigurationLogicAppResourceId = ($LogicAppResourceId.Id)
- $automationRuleAction.ActionConfigurationTenantId = (Get-AzContext).Tenant.Id
- Update-AzSentinelAutomationRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Action $automationRuleAction -DisplayName "Run Playbook to reset AAD password" -Order 2 -TriggeringLogicIsEnabled
+{{ Add code here }}
 ```
 
-This command updates an automation rule
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

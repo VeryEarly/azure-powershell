@@ -30,12 +30,27 @@ Delete the action of alert rule.
 
 ## EXAMPLES
 
-### Example 1: Removes an alert rule action
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -RuleId "29d2523f-84ce-42d3-b5f1-9e63c85aaed1" -Id "1a33301b-fb83-416a-8d58-3873c7c2dc86"
+{{ Add code here }}
 ```
 
-This command removes an alert rule action.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -212,7 +227,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

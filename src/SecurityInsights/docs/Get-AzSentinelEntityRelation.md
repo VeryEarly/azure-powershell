@@ -36,27 +36,27 @@ Gets an entity relation.
 
 ## EXAMPLES
 
-### Example 1: List all Entity Relations for a given Entity 
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
+{{ Add code here }}
 ```
 
-This command lists all Entity Relations for a given Entity.
-
-### Example 2: Get an Entity Relation
-```powershell
- Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -Id "myEntityRelationId"
+```output
+{{ Add output here }}
 ```
 
-This command gets an Entity Relation for a given Entity.
+{{ Add description here }}
 
-### Example 3: Get an Entity Relation by object Id
+### Example 2: {{ Add title here }}
 ```powershell
- $EntityRelations = Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
- $EntityRelations[0] | Get-AzSentinelEntityRelation
+{{ Add code here }}
 ```
 
-This command gets a Entity Relation by object
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -252,7 +252,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

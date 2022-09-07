@@ -1,14 +1,22 @@
-### Example 1: Removes an incident based on the incident Id
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id <IncidentId>
+{{ Add code here }}
 ```
 
-This command removes an incident based on the incident id.
-
-### Example 2: Removes an incident based on the incident number
-```powershell
-$myIncident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id <IncidentId> | Where-Object {$_.Number -eq "780"}
+```output
+{{ Add output here }}
 ```
 
-The command removes an incident based on an incident number.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

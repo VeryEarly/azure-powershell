@@ -35,62 +35,27 @@ Gets an entity.
 
 ## EXAMPLES
 
-### Example 1: List all Entities
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+{{ Add code here }}
 ```
 
 ```output
-FriendlyName 	: WIN2019
-Kind         	: Host
-Name         	: 8d036a2d-f37d-e936-6cca-4e172687cb79
-
-FriendlyName : 186.120.101.12
-Kind         : Ip
-Name         : bb590b07-5ef5-bf85-1c3e-2a04e1e137d2
+{{ Add output here }}
 ```
 
-This command lists all Entities under a Microsoft Sentinel workspace.
+{{ Add description here }}
 
-### Example 2: Get an Entity
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "8d036a2d-f37d-e936-6cca-4e172687cb79"
+{{ Add code here }}
 ```
 
 ```output
-FriendlyName 	: WIN2019
-Kind         	: Host
-Name         	: 8d036a2d-f37d-e936-6cca-4e172687cb79
+{{ Add output here }}
 ```
 
-This command gets an Entity.
-
-### Example 3: Get a Entity by object Id
-```powershell
- $Entitys = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
- $Entitys[0] | Get-AzSentinelEntity
-```
-
-```output
-FriendlyName 	: WIN2019
-Kind         	: Host
-Name         	: 8d036a2d-f37d-e936-6cca-4e172687cb79
-```
-
-This command gets an Entity by object
-
-### Example 4: Get a Entity by kind
-```powershell
- Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.Kind -eq "CloudApplication"} 
-```
-
-```output
-FriendlyName : Office 365
-Kind         : CloudApplication
-Name         : 8fceb9c4-abe7-7174-aabf-f1dde96a945e
-```
-
-This command gets an Entity by kind
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -206,7 +171,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

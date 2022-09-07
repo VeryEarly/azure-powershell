@@ -1,6 +1,22 @@
-### Example 1: Remove the Sentinel onboarding state
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
+{{ Add code here }}
 ```
 
-This commands removes the Sentinel onboarding state
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

@@ -1,51 +1,22 @@
-### Example 1: List all Settings
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+{{ Add code here }}
 ```
+
 ```output
-Kind      : EntityAnalytics
-Name      : EntityAnalytics
-IsEnabled : True
-
-Kind      : EyesOn
-Name      : EyesOn
-IsEnabled : True
-
-Kind : IPSyncer
-Name : IPSyncer
-
-Kind      : Anomalies
-Name      : Anomalies
-IsEnabled : True
-
-Kind       : Ueba
-Name       : Ueba
-DataSource : {AuditLogs, AzureActivity, SecurityEvent, SigninLogs}
+{{ Add output here }}
 ```
 
-This command lists all Settings under a Microsoft Sentinel workspace.
+{{ Add description here }}
 
-### Example 2: Get a Setting
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName "Anomalies"
+{{ Add code here }}
 ```
+
 ```output
-Kind      : Anomalies
-Name      : Anomalies
-IsEnabled : True
+{{ Add output here }}
 ```
 
-This command gets a Setting.
+{{ Add description here }}
 
-### Example 3: Get a Setting by object Id
-```powershell
- $Settings = Get-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
- $Settings[0] | Get-AzSentinelSetting
-```
-```output
-Kind      : Anomalies
-Name      : Anomalies
-IsEnabled : True
-```
-
-This command gets a Setting by object

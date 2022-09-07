@@ -33,18 +33,27 @@ Creates or updates the automation rule.
 
 ## EXAMPLES
 
-### Example 1: Updates an automation rule
+### Example 1: {{ Add title here }}
 ```powershell
- $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
- $automationRuleAction.Order = 1
- $automationRuleAction.ActionType = "RunPlaybook"
- $automationRuleAction.ActionConfigurationLogicAppResourceId = ($LogicAppResourceId.Id)
- $automationRuleAction.ActionConfigurationTenantId = (Get-AzContext).Tenant.Id
- Update-AzSentinelAutomationRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Action $automationRuleAction -DisplayName "Run Playbook to reset AAD password" -Order 2 -TriggeringLogicIsEnabled
+{{ Add code here }}
 ```
 
-This command updates an automation rule
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -282,11 +291,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACTION <IAutomationRuleAction[]>: The actions to execute when the automation rule is triggered
+`ACTION <IAutomationRuleAction[]>`: The actions to execute when the automation rule is triggered
   - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
   - `Order <Int32>`: The order of execution of the automation rule action
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

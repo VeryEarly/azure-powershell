@@ -36,45 +36,27 @@ Gets a bookmark relation.
 
 ## EXAMPLES
 
-### Example 1: List all Bookmark Relations for a given Bookmark 
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelBookmarkRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -BookmarkId "myBookmarkId"
+{{ Add code here }}
 ```
 
 ```output
-Name                : 83846045-d8dc-4d6b-abbe-7588219c474e
-RelatedResourceName : 7cc984fe-61a2-43c2-a1a4-3583c8a89da2
-RelatedResourceType : Microsoft.SecurityInsights/Incidents
+{{ Add output here }}
 ```
 
-This command lists all Bookmark Relations for a given Bookmark.
+{{ Add description here }}
 
-### Example 2: Get a Bookmark Relation
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelBookmarkRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -BookmarkId "myBookmarkId"
+{{ Add code here }}
 ```
 
 ```output
-Name                : 83846045-d8dc-4d6b-abbe-7588219c474e
-RelatedResourceName : 7cc984fe-61a2-43c2-a1a4-3583c8a89da2
-RelatedResourceType : Microsoft.SecurityInsights/Incidents
+{{ Add output here }}
 ```
 
-This command gets a Bookmark Relation.
-
-### Example 3: Get a Bookmark Relation by object Id
-```powershell
- $Bookmarkrelations = Get-AzSentinelBookmarkRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -BookmarkId "myBookmarkId"
- $Bookmarkrelations[0] | Get-AzSentinelBookmarkRelation
-```
-
-```output
-Name                : 83846045-d8dc-4d6b-abbe-7588219c474e
-RelatedResourceName : 7cc984fe-61a2-43c2-a1a4-3583c8a89da2
-RelatedResourceType : Microsoft.SecurityInsights/Incidents
-```
-
-This command gets a Bookmark by object
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -270,7 +252,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

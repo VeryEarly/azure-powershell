@@ -14,8 +14,8 @@ Creates or updates the incident.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-Classification <IncidentClassification>] [-ClassificationComment <String>]
+New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Classification <IncidentClassification>] [-ClassificationComment <String>]
  [-ClassificationReason <IncidentClassificationReason>] [-Description <String>]
  [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
  [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
@@ -27,7 +27,8 @@ New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Sub
 ### Create
 ```
 New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -Incident <IIncident>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,23 +36,27 @@ Creates or updates the incident.
 
 ## EXAMPLES
 
-### Example 1: Create an Incident
+### Example 1: {{ Add title here }}
 ```powershell
- New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Title "NewIncident" -Description "My Description" -Severity Low -Status New
+{{ Add code here }}
 ```
 
 ```output
-Title          : NewIncident
-Description    : My Description
-Severity       : Low
-Status         : New
-Number         : 779
-CreatedTimeUtc : 2/3/2022 7:47:03 PM
-Name           : c831b5a7-5644-403f-9dc3-96d651e04c6d
-Url            : https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/274b1a41-c53c-4092-8d4a-7210f6a44a0c/resourceGroups/cyber-soc/providers/Microsoft.OperationalInsights/workspaces/myworkspace/providers/Microsoft.SecurityInsights/Incidents/c831b5a7-5644-403f-9dc3-96d651e04c6d
+{{ Add output here }}
 ```
 
-This command creates an Incident.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -141,6 +146,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Incident ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: IncidentId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -424,7 +444,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
+`INCIDENT <IIncident>`: Represents an incident in Azure Security Insights.
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
@@ -450,7 +470,7 @@ INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
   - `[Status <IncidentStatus?>]`: The status of the incident
   - `[Title <String>]`: The title of the incident
 
-LABEL <IIncidentLabel[]>: List of labels relevant to this incident
+`LABEL <IIncidentLabel[]>`: List of labels relevant to this incident
   - `LabelName <String>`: The name of the label
 
 ## RELATED LINKS

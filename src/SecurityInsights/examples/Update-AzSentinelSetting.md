@@ -1,8 +1,22 @@
-### Example 1: Update the Anomalies setting
+### Example 1: {{ Add title here }}
 ```powershell
- Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled $true
+{{ Add code here }}
 ```
 
-This command updates the Anomalies setting, other settings are:
-EyesOn, EntityAnalytics and Ueba
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

@@ -35,29 +35,27 @@ Get Sentinel onboarding state
 
 ## EXAMPLES
 
-### Example 1: List all Onboarding States
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+{{ Add code here }}
 ```
 
 ```output
-Id   : /subscriptions/314b1a41-c53c-4092-8d4a-2810f6a44a0c/resourceGroups/myRG/providers/Microsoft.OperationalInsights/workspaces/cybersecurity/providers/Microsoft.SecurityInsights/onboardingStates/default
-Name : default
+{{ Add output here }}
 ```
 
-This command lists all Onboarding States under a Microsoft Sentinel workspace.
+{{ Add description here }}
 
-### Example 2: Get an Onboarding State
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Name "default"
+{{ Add code here }}
 ```
 
 ```output
-Id   : /subscriptions/314b1a41-c53c-4092-8d4a-2810f6a44a0c/resourceGroups/myRG/providers/Microsoft.OperationalInsights/workspaces/cybersecurity/providers/Microsoft.SecurityInsights/onboardingStates/default
-Name : default
+{{ Add output here }}
 ```
 
-This command gets an Onboarding State.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -174,7 +172,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

@@ -1,7 +1,22 @@
-### Example 1: Removes Sentinel Data Connector
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id 661b961f-53d8-4bd1-be97-24e808fd04f5
+{{ Add code here }}
 ```
 
-This command removes a data connector.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

@@ -1,8 +1,22 @@
-### Example 1: Remove a Sentinel Bookmark
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id <bookMarkId> 
+{{ Add code here }}
 ```
 
-This command removes a bookmark
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

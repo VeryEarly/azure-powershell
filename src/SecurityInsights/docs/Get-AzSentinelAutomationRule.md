@@ -35,40 +35,27 @@ Gets the automation rule.
 
 ## EXAMPLES
 
-### Example 1: List all Automation Rules
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelAutomationRule -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+{{ Add code here }}
 ```
 
 ```output
-DisplayName                 : VIP automation rule
-CreatedByEmail              : luke@contoso.com
-CreatedByUserPrincipalName  : luke@contoso.com
-TriggeringLogicIsEnabled    : True
-TriggeringLogicTriggersOn   : Incidents
-TriggeringLogicTriggersWhen : Created
-Name                       	: 2f32af32-ad13-4fbb-9fbc-e19e0e7ff767
-
+{{ Add output here }}
 ```
 
-This command lists all Automation Rules under a Microsoft Sentinel workspace.
+{{ Add description here }}
 
-### Example 2: Get an Automation Rule
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelAutomationRule -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "2f32af32-ad13-4fbb-9fbc-e19e0e7ff767"
+{{ Add code here }}
 ```
 
 ```output
-DisplayName                 : VIP automation rule
-CreatedByEmail              : luke@contoso.com
-CreatedByUserPrincipalName  : luke@contoso.com
-TriggeringLogicIsEnabled    : True
-TriggeringLogicTriggersOn   : Incidents
-TriggeringLogicTriggersWhen : Created
-Name                       	: 2f32af32-ad13-4fbb-9fbc-e19e0e7ff767
+{{ Add output here }}
 ```
 
-This command gets an Automation Rule.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -184,7 +171,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

@@ -35,67 +35,27 @@ Gets an entity query.
 
 ## EXAMPLES
 
-### Example 1: List all Entity Queries
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+{{ Add code here }}
 ```
 
 ```output
-DisplayName     : Related entities
-DataSource      : {SecurityAlert}
-Name            : 98b974fd-cc64-48b8-9bd0-3a209f5b944b
-InputEntityType : SecurityAlert
-
-DisplayName     : Related alerts
-DataSource      : {SecurityAlert}
-Name            : 055a5692-555f-42bd-ac17-923a5a9994ed
-InputEntityType : Host
+{{ Add output here }}
 ```
 
-This command lists all Entity Queries under a Microsoft Sentinel workspace.
+{{ Add description here }}
 
-### Example 2: Get an Entity Query
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryId"
+{{ Add code here }}
 ```
 
 ```output
-DisplayName     : Related entities
-DataSource      : {SecurityAlert}
-Name            : 98b974fd-cc64-48b8-9bd0-3a209f5b944b
-InputEntityType : SecurityAlert
-QueryTemplate   : let GetAlertRelatedEntities = (v_SecurityAlert_SystemAlertId:string){
-                                              SecurityAlert
-                                              | where SystemAlertId == v_SecurityAlert_SystemAlertId
-                                              | project entities = todynamic(Entities)
-                                              | mv-expand entities
-                                              | project-rename entity=entities};
-                                              GetAlertRelatedEntities('<systemAlertId>')
+{{ Add output here }}
 ```
 
-This command gets an Entity Query.
-
-### Example 3: Get an Entity Query by object Id
-```powershell
- $EntityQueries = Get-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
- $EntityQueries[0] | Get-AzSentinelEntityQuery
-```
-
-```output
-DisplayName     : Related entities
-DataSource      : {SecurityAlert}
-Name            : 98b974fd-cc64-48b8-9bd0-3a209f5b944b
-InputEntityType : SecurityAlert
-QueryTemplate   : let GetAlertRelatedEntities = (v_SecurityAlert_SystemAlertId:string){
-                                              SecurityAlert
-                                              | where SystemAlertId == v_SecurityAlert_SystemAlertId
-                                              | project entities = todynamic(Entities)
-                                              | mv-expand entities
-                                              | project-rename entity=entities};
-                                              GetAlertRelatedEntities('<systemAlertId>')
-```
-
-This command gets a Entity Query by object.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -226,7 +186,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

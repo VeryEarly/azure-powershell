@@ -1,6 +1,22 @@
-### Example 1: Add Sentinel onboarding state
+### Example 1: {{ Add title here }}
 ```powershell
-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
+{{ Add code here }}
 ```
 
-This command configures the onboarding state of Sentinel
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

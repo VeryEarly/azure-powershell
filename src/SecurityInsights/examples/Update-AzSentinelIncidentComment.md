@@ -1,7 +1,22 @@
-### Example 1: Update incident comment
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId 7cc984fe-61a2-43c2-a1a4-3583c8a89da2 -Id 8bb5c1eb-a3a9-4575-9451-cd2834be0e0a -Message "my comment"
+{{ Add code here }}
 ```
 
-This command updates an incident comment
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

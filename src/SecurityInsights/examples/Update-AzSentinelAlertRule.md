@@ -1,7 +1,22 @@
-### Example 1: Update an scheduled alert rule
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -ruleId "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -Query "SecurityAlert | take 2"
+{{ Add code here }}
 ```
 
-This command updates a scheduled alert rule
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
