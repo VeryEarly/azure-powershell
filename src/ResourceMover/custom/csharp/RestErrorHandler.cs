@@ -14,15 +14,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         public static void WriteError(this Cmdlet cmdlet, HttpResponseMessage responseMessage, Task<ICloudError> errorResponseTask, ref Task<bool> returnNow)
         {
             var response = errorResponseTask.ConfigureAwait(false).GetAwaiter().GetResult();
-            var errors = response.Detail.ToList<ICloudErrorBody>();
-            errors.Insert(0, new CloudErrorBody {Code = response.Code, Message = response.Message});
-            errors.ForEach(e => {
-                cmdlet.WriteError(new ErrorRecord(new System.Exception(), null, ErrorCategory.InvalidOperation, null)
-                {
-                    ErrorDetails = new ErrorDetails(string.Format("code: {0}, message: {1}", e.Code, e.Message)) { RecommendedAction = string.Empty }
+            if (response?.Detail != null && response?.Detail?.Length != 0) {
+                var errors = response.Detail.ToList<ICloudErrorBody>();
+                errors.Insert(0, new CloudErrorBody {Code = response.Code, Message = response.Message});
+                errors.ForEach(e => {
+                    cmdlet.WriteError(new ErrorRecord(new System.Exception(), null, ErrorCategory.InvalidOperation, null)
+                    {
+                        ErrorDetails = new ErrorDetails(string.Format("code: {0}, message: {1}", e.Code, e.Message)) { RecommendedAction = string.Empty }
+                    });
                 });
-            });
-            returnNow = Task.FromResult(true);
+                returnNow = Task.FromResult(true);
+            }
         }
     }
 }
