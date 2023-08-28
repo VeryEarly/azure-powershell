@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -12,12 +13,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
     {
         public static void WriteError(this Cmdlet cmdlet, HttpResponseMessage responseMessage, Task<ICloudError> errorResponseTask, ref Task<bool> returnNow)
         {
-            var errorString = responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            cmdlet.WriteError(new ErrorRecord(new System.Exception(), null, ErrorCategory.InvalidOperation, null)
-            {
-                ErrorDetails = new ErrorDetails(errorString) { RecommendedAction = string.Empty }
+            var response = errorResponseTask.ConfigureAwait(false).GetAwaiter().GetResult();
+            var errors = response.Detail.ToList<ICloudErrorBody>();
+            errors.Insert(0, new CloudErrorBody {Code = response.Code, Message = response.Message});
+            errors.ForEach(e => {
+                cmdlet.WriteError(new ErrorRecord(new System.Exception(), null, ErrorCategory.InvalidOperation, null)
+                {
+                    ErrorDetails = new ErrorDetails(string.Format("code: {0}, message: {1}", e.Code, e.Message)) { RecommendedAction = string.Empty }
+                });
             });
-
             returnNow = Task.FromResult(true);
         }
     }
