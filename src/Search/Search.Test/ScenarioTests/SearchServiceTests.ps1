@@ -138,7 +138,7 @@ function Test-NewAzSearchServiceSemanticDisabled
 {
 	# Arrange
 	$rgname = getAssetName
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Standard"
 	$partitionCount = 1
@@ -176,7 +176,7 @@ function Test-NewAzSearchServiceSemanticStandard
 {
 	# Arrange
 	$rgname = getAssetName
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Standard"
 	$partitionCount = 1
@@ -214,7 +214,7 @@ function Test-NewAzSearchServiceSemanticFree
 {
 	# Arrange
 	$rgname = getAssetName
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Standard"
 	$partitionCount = 1
