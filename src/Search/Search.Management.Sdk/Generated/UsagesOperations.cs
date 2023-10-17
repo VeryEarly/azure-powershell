@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Search
     using System.Threading.Tasks;
 
     /// <summary>
-    /// AdminKeysOperations operations.
+    /// UsagesOperations operations.
     /// </summary>
-    internal partial class AdminKeysOperations : IServiceOperations<SearchManagementClient>, IAdminKeysOperations
+    internal partial class UsagesOperations : IServiceOperations<SearchManagementClient>, IUsagesOperations
     {
         /// <summary>
-        /// Initializes a new instance of the AdminKeysOperations class.
+        /// Initializes a new instance of the UsagesOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal AdminKeysOperations(SearchManagementClient client)
+        internal UsagesOperations(SearchManagementClient client)
         {
             if (client == null)
             {
@@ -51,17 +51,11 @@ namespace Microsoft.Azure.Management.Search
         public SearchManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the primary and secondary admin API keys for the specified Azure
-        /// Cognitive Search service.
+        /// Gets a list of all Search quota usages in the given subscription.
         /// <see href="https://aka.ms/search-manage" />
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the
-        /// specified resource group.
+        /// <param name='location'>
+        /// The unique location name for a Microsoft Azure geographic region.
         /// </param>
         /// <param name='searchManagementRequestOptions'>
         /// Additional parameters for the operation
@@ -87,15 +81,11 @@ namespace Microsoft.Azure.Management.Search
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<AdminKeyResult>> GetWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<QuotaUsageResult>>> ListBySubscriptionWithHttpMessagesAsync(string location, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (resourceGroupName == null)
+            if (location == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (searchServiceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "searchServiceName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (Client.ApiVersion == null)
             {
@@ -117,17 +107,15 @@ namespace Microsoft.Azure.Management.Search
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("searchServiceName", searchServiceName);
+                tracingParameters.Add("location", location);
                 tracingParameters.Add("clientRequestId", clientRequestId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListBySubscription", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/listAdminKeys").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{searchServiceName}", System.Uri.EscapeDataString(searchServiceName));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages").ToString();
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -141,7 +129,7 @@ namespace Microsoft.Azure.Management.Search
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.Method = new HttpMethod("GET");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -235,7 +223,7 @@ namespace Microsoft.Azure.Management.Search
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<AdminKeyResult>();
+            var _result = new AzureOperationResponse<IPage<QuotaUsageResult>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -248,7 +236,7 @@ namespace Microsoft.Azure.Management.Search
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AdminKeyResult>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<QuotaUsageResult>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -268,21 +256,11 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Regenerates either the primary or secondary admin API key. You can only
-        /// regenerate one key at a time.
+        /// Gets a list of all Search quota usages in the given subscription.
         /// <see href="https://aka.ms/search-manage" />
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the
-        /// specified resource group.
-        /// </param>
-        /// <param name='keyKind'>
-        /// Specifies which key to regenerate. Valid values include 'primary' and
-        /// 'secondary'. Possible values include: 'Primary', 'Secondary'
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='searchManagementRequestOptions'>
         /// Additional parameters for the operation
@@ -308,23 +286,11 @@ namespace Microsoft.Azure.Management.Search
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<AdminKeyResult>> RegenerateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, AdminKeyKind keyKind, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<QuotaUsageResult>>> ListBySubscriptionNextWithHttpMessagesAsync(string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (resourceGroupName == null)
+            if (nextPageLink == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (searchServiceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "searchServiceName");
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
             }
             System.Guid? clientRequestId = default(System.Guid?);
             if (searchManagementRequestOptions != null)
@@ -338,25 +304,15 @@ namespace Microsoft.Azure.Management.Search
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("searchServiceName", searchServiceName);
-                tracingParameters.Add("keyKind", keyKind);
+                tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("clientRequestId", clientRequestId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Regenerate", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListBySubscriptionNext", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/regenerateAdminKey/{keyKind}").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{searchServiceName}", System.Uri.EscapeDataString(searchServiceName));
-            _url = _url.Replace("{keyKind}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(keyKind, Client.SerializationSettings).Trim('"')));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
             if (_queryParameters.Count > 0)
             {
                 _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
@@ -364,7 +320,7 @@ namespace Microsoft.Azure.Management.Search
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.Method = new HttpMethod("GET");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -458,7 +414,7 @@ namespace Microsoft.Azure.Management.Search
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<AdminKeyResult>();
+            var _result = new AzureOperationResponse<IPage<QuotaUsageResult>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -471,7 +427,7 @@ namespace Microsoft.Azure.Management.Search
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AdminKeyResult>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<QuotaUsageResult>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

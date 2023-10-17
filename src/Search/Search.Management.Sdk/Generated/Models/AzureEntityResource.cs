@@ -14,21 +14,24 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes an existing Private Endpoint connection to the Azure
-    /// Cognitive Search service.
+    /// Entity Resource
     /// </summary>
-    public partial class PrivateEndpointConnection : Resource
+    /// <remarks>
+    /// The resource model definition for an Azure Resource Manager resource
+    /// with an etag.
+    /// </remarks>
+    public partial class AzureEntityResource : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnection class.
+        /// Initializes a new instance of the AzureEntityResource class.
         /// </summary>
-        public PrivateEndpointConnection()
+        public AzureEntityResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnection class.
+        /// Initializes a new instance of the AzureEntityResource class.
         /// </summary>
         /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
@@ -36,13 +39,11 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <param name="type">The type of the resource. E.g.
         /// "Microsoft.Compute/virtualMachines" or
         /// "Microsoft.Storage/storageAccounts"</param>
-        /// <param name="properties">Describes the properties of an existing
-        /// Private Endpoint connection to the Azure Cognitive Search
-        /// service.</param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties))
+        /// <param name="etag">Resource Etag.</param>
+        public AzureEntityResource(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
             : base(id, name, type)
         {
-            Properties = properties;
+            Etag = etag;
             CustomInit();
         }
 
@@ -52,11 +53,10 @@ namespace Microsoft.Azure.Management.Search.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets describes the properties of an existing Private
-        /// Endpoint connection to the Azure Cognitive Search service.
+        /// Gets resource Etag.
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public PrivateEndpointConnectionProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
 
     }
 }

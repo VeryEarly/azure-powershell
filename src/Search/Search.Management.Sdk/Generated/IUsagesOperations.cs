@@ -19,23 +19,16 @@ namespace Microsoft.Azure.Management.Search
     using System.Threading.Tasks;
 
     /// <summary>
-    /// AdminKeysOperations operations.
+    /// UsagesOperations operations.
     /// </summary>
-    public partial interface IAdminKeysOperations
+    public partial interface IUsagesOperations
     {
         /// <summary>
-        /// Gets the primary and secondary admin API keys for the specified
-        /// Azure Cognitive Search service.
+        /// Gets a list of all Search quota usages in the given subscription.
         /// <see href="https://aka.ms/search-manage" />
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You
-        /// can obtain this value from the Azure Resource Manager API or the
-        /// portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the
-        /// specified resource group.
+        /// <param name='location'>
+        /// The unique location name for a Microsoft Azure geographic region.
         /// </param>
         /// <param name='searchManagementRequestOptions'>
         /// Additional parameters for the operation
@@ -55,24 +48,13 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AdminKeyResult>> GetWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<QuotaUsageResult>>> ListBySubscriptionWithHttpMessagesAsync(string location, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Regenerates either the primary or secondary admin API key. You can
-        /// only regenerate one key at a time.
+        /// Gets a list of all Search quota usages in the given subscription.
         /// <see href="https://aka.ms/search-manage" />
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You
-        /// can obtain this value from the Azure Resource Manager API or the
-        /// portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the
-        /// specified resource group.
-        /// </param>
-        /// <param name='keyKind'>
-        /// Specifies which key to regenerate. Valid values include 'primary'
-        /// and 'secondary'. Possible values include: 'Primary', 'Secondary'
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='searchManagementRequestOptions'>
         /// Additional parameters for the operation
@@ -92,6 +74,6 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AdminKeyResult>> RegenerateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, AdminKeyKind keyKind, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<QuotaUsageResult>>> ListBySubscriptionNextWithHttpMessagesAsync(string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
