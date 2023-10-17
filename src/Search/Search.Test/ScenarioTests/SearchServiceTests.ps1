@@ -132,6 +132,120 @@ function Test-NewAzSearchServiceDisableLocalAuth
 
 <#
 .SYNOPSIS
+Test New-AzSearchServiceSemanticDisabled
+#>
+function Test-NewAzSearchServiceSemanticDisabled
+{
+	# Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Standard"
+	$partitionCount = 1
+	$replicaCount = 1
+	$semanticSearchMode = "disabled"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -SemanticSearchMode $semanticSearchMode
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $semanticSearchMode $newSearchService.SemanticSearchMode
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServiceSemanticStandard
+#>
+function Test-NewAzSearchServiceSemanticStandard
+{
+	# Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Standard"
+	$partitionCount = 1
+	$replicaCount = 1
+	$semanticSearchMode = "standard"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -SemanticSearchMode $semanticSearchMode
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $semanticSearchMode $newSearchService.SemanticSearchMode
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServiceSemanticFree
+#>
+function Test-NewAzSearchServiceSemanticFree
+{
+	# Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Standard"
+	$partitionCount = 1
+	$replicaCount = 1
+	$semanticSearchMode = "free"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -SemanticSearchMode $semanticSearchMode
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $semanticSearchMode $newSearchService.SemanticSearchMode
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test NewAzSearchServiceApiKeyOnlyAuth
 #>
 function Test-NewAzSearchServiceApiKeyOnlyAuth
