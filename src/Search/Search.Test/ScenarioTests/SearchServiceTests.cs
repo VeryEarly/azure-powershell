@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewAzSearchServiceApiKeyOnlyAuth");
         }
 
-        [Fact(Skip = "Requires Quota")]
+        [Fact(Skip = "Quota")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchServiceL1()
         {
