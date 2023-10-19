@@ -12,7 +12,8 @@ autorest.cmd README.md --version=v2
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -25,7 +26,7 @@ payload-flattening-threshold: 2
 ``` yaml
 commit: d56d45ab2e5cae2ecd109fec959129e7db61f7af
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/search.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/search/resource-manager/Microsoft.Search/stable/2022-09-01/search.json
 
 output-folder: Generated
 
