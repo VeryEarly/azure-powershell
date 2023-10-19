@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Management.Search
                 {
                     _httpRequest.Headers.Remove("x-ms-client-request-id");
                 }
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", clientRequestId.ToString());
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(clientRequestId, this.SerializationSettings).Trim('"'));
             }
 
             if (customHeaders != null)
