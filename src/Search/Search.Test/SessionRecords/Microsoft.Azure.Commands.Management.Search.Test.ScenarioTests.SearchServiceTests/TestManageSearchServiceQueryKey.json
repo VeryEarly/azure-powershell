@@ -1587,7 +1587,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"WlGTf0iufCptH4n11qkknKJu1LTWRNWdOIwSyuwdmoAzSeCCEO7G\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"Sanitized\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -1659,7 +1659,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"WlGTf0iufCptH4n11qkknKJu1LTWRNWdOIwSyuwdmoAzSeCCEO7G\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"Sanitized\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -1731,7 +1731,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"WlGTf0iufCptH4n11qkknKJu1LTWRNWdOIwSyuwdmoAzSeCCEO7G\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"Sanitized\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -1803,7 +1803,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"WlGTf0iufCptH4n11qkknKJu1LTWRNWdOIwSyuwdmoAzSeCCEO7G\"\r\n    },\r\n    {\r\n      \"name\": \"newquerykey1\",\r\n      \"key\": \"bPFcZG59LqkDcZtiR7ITXBVPjTKBUXwDegz71Z4ziqAzSeCUEpsF\"\r\n    },\r\n    {\r\n      \"name\": \"newquerykey2\",\r\n      \"key\": \"26FL2vkfKgH9BxRcLxOxYSd5jaDr3zYolE9dzm3nSkAzSeAqVNfn\"\r\n    },\r\n    {\r\n      \"name\": \"newquerykey3\",\r\n      \"key\": \"rdl677eAPt8HwanZGKZCMMktct39ysWlHWks1uEak1AzSeAR2rz7\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"Sanitized\"\r\n    },\r\n    {\r\n      \"name\": \"newquerykey1\",\r\n      \"key\": \"Sanitized\"\r\n    },\r\n    {\r\n      \"name\": \"newquerykey2\",\r\n      \"key\": \"Sanitized\"\r\n    },\r\n    {\r\n      \"name\": \"newquerykey3\",\r\n      \"key\": \"Sanitized\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -1875,7 +1875,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"WlGTf0iufCptH4n11qkknKJu1LTWRNWdOIwSyuwdmoAzSeCCEO7G\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": null,\r\n      \"key\": \"Sanitized\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -1947,7 +1947,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"newquerykey1\",\r\n  \"key\": \"bPFcZG59LqkDcZtiR7ITXBVPjTKBUXwDegz71Z4ziqAzSeCUEpsF\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"newquerykey1\",\r\n  \"key\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -2019,7 +2019,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"newquerykey2\",\r\n  \"key\": \"26FL2vkfKgH9BxRcLxOxYSd5jaDr3zYolE9dzm3nSkAzSeAqVNfn\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"newquerykey2\",\r\n  \"key\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -2091,12 +2091,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"newquerykey3\",\r\n  \"key\": \"rdl677eAPt8HwanZGKZCMMktct39ysWlHWks1uEak1AzSeAR2rz7\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"newquerykey3\",\r\n  \"key\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9ff4ebf4-0c4a-43e8-861c-b445afdd66bf/resourceGroups/ps6308/providers/Microsoft.Search/searchServices/ps6308-service/deleteQueryKey/bPFcZG59LqkDcZtiR7ITXBVPjTKBUXwDegz71Z4ziqAzSeCUEpsF?api-version=2023-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWZmNGViZjQtMGM0YS00M2U4LTg2MWMtYjQ0NWFmZGQ2NmJmL3Jlc291cmNlR3JvdXBzL3BzNjMwOC9wcm92aWRlcnMvTWljcm9zb2Z0LlNlYXJjaC9zZWFyY2hTZXJ2aWNlcy9wczYzMDgtc2VydmljZS9kZWxldGVRdWVyeUtleS9iUEZjWkc1OUxxa0RjWnRpUjdJVFhCVlBqVEtCVVh3RGVnejcxWjR6aXFBelNlQ1VFcHNGP2FwaS12ZXJzaW9uPTIwMjMtMTEtMDE=",
+      "RequestUri": "/subscriptions/9ff4ebf4-0c4a-43e8-861c-b445afdd66bf/resourceGroups/ps6308/providers/Microsoft.Search/searchServices/ps6308-service/deleteQueryKey/Sanitized?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWZmNGViZjQtMGM0YS00M2U4LTg2MWMtYjQ0NWFmZGQ2NmJmL3Jlc291cmNlR3JvdXBzL3BzNjMwOC9wcm92aWRlcnMvTWljcm9zb2Z0LlNlYXJjaC9zZWFyY2hTZXJ2aWNlcy9wczYzMDgtc2VydmljZS9kZWxldGVRdWVyeUtleS9TYW5pdGl6ZWQ/YXBpLXZlcnNpb249MjAyMy0xMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -2161,8 +2161,8 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/9ff4ebf4-0c4a-43e8-861c-b445afdd66bf/resourceGroups/ps6308/providers/Microsoft.Search/searchServices/ps6308-service/deleteQueryKey/26FL2vkfKgH9BxRcLxOxYSd5jaDr3zYolE9dzm3nSkAzSeAqVNfn?api-version=2023-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWZmNGViZjQtMGM0YS00M2U4LTg2MWMtYjQ0NWFmZGQ2NmJmL3Jlc291cmNlR3JvdXBzL3BzNjMwOC9wcm92aWRlcnMvTWljcm9zb2Z0LlNlYXJjaC9zZWFyY2hTZXJ2aWNlcy9wczYzMDgtc2VydmljZS9kZWxldGVRdWVyeUtleS8yNkZMMnZrZktnSDlCeFJjTHhPeFlTZDVqYURyM3pZb2xFOWR6bTNuU2tBelNlQXFWTmZuP2FwaS12ZXJzaW9uPTIwMjMtMTEtMDE=",
+      "RequestUri": "/subscriptions/9ff4ebf4-0c4a-43e8-861c-b445afdd66bf/resourceGroups/ps6308/providers/Microsoft.Search/searchServices/ps6308-service/deleteQueryKey/Sanitized?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWZmNGViZjQtMGM0YS00M2U4LTg2MWMtYjQ0NWFmZGQ2NmJmL3Jlc291cmNlR3JvdXBzL3BzNjMwOC9wcm92aWRlcnMvTWljcm9zb2Z0LlNlYXJjaC9zZWFyY2hTZXJ2aWNlcy9wczYzMDgtc2VydmljZS9kZWxldGVRdWVyeUtleS9TYW5pdGl6ZWQ/YXBpLXZlcnNpb249MjAyMy0xMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -2227,8 +2227,8 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/9ff4ebf4-0c4a-43e8-861c-b445afdd66bf/resourceGroups/ps6308/providers/Microsoft.Search/searchServices/ps6308-service/deleteQueryKey/rdl677eAPt8HwanZGKZCMMktct39ysWlHWks1uEak1AzSeAR2rz7?api-version=2023-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWZmNGViZjQtMGM0YS00M2U4LTg2MWMtYjQ0NWFmZGQ2NmJmL3Jlc291cmNlR3JvdXBzL3BzNjMwOC9wcm92aWRlcnMvTWljcm9zb2Z0LlNlYXJjaC9zZWFyY2hTZXJ2aWNlcy9wczYzMDgtc2VydmljZS9kZWxldGVRdWVyeUtleS9yZGw2NzdlQVB0OEh3YW5aR0taQ01Na3RjdDM5eXNXbEhXa3MxdUVhazFBelNlQVIycno3P2FwaS12ZXJzaW9uPTIwMjMtMTEtMDE=",
+      "RequestUri": "/subscriptions/9ff4ebf4-0c4a-43e8-861c-b445afdd66bf/resourceGroups/ps6308/providers/Microsoft.Search/searchServices/ps6308-service/deleteQueryKey/Sanitized?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWZmNGViZjQtMGM0YS00M2U4LTg2MWMtYjQ0NWFmZGQ2NmJmL3Jlc291cmNlR3JvdXBzL3BzNjMwOC9wcm92aWRlcnMvTWljcm9zb2Z0LlNlYXJjaC9zZWFyY2hTZXJ2aWNlcy9wczYzMDgtc2VydmljZS9kZWxldGVRdWVyeUtleS9TYW5pdGl6ZWQ/YXBpLXZlcnNpb249MjAyMy0xMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
