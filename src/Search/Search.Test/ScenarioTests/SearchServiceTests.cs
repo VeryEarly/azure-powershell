@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewAzSearchServiceApiKeyOnlyAuth");
         }
 
-        [Fact(Skip = "Quota")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchServiceL1()
         {
@@ -157,21 +157,21 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetAzSearchPrivateLinkResourcePipeline");
         }
 
-        [Fact(Skip = "Private Link Provisioning Times Out")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSharedPrivateLinkResources()
         {
             TestRunner.RunTestScript("Test-ManageAzSearchSharedPrivateLinkResources");
         }
 
-        [Fact(Skip = "Private Link Provisioning Times Out")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSharedPrivateLinkResourcesPipeline()
         {
             TestRunner.RunTestScript("Test-ManageAzSearchSharedPrivateLinkResourcePipeline");
         }
 
-        [Fact(Skip = "Private Link Provisioning Times Out")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSharedPrivateLinkResourcesJob()
         {

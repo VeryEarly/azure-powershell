@@ -337,7 +337,7 @@ function Test-NewAzSearchServiceL1
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US"
 	$svcName = $rgname + "-service"
 	$sku = "Storage_Optimized_L1"
 	$partitionCount = 1
@@ -951,7 +951,7 @@ function Test-ManageAzSearchSharedPrivateLinkResources
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -1067,7 +1067,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourcePipeline
 # Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -1168,7 +1168,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 # Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
