@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Databricks
-Module Guid: fd603f36-03d8-47f4-9f7c-c13a78761936
+Module Guid: bbc8c396-087d-420d-83df-6e470e2f4d62
 Download Help Link: https://learn.microsoft.com/powershell/module/az.databricks
 Help Version: 1.0.0.0
 Locale: en-US
