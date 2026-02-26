@@ -11,6 +11,9 @@ options:
     service-name: DependencyMap
     module-name: "{prefix}.{service-name}"
     output-folder: "{output-dir}"
+    additionalDirectories:
+      - "specification/edge/Microsoft.Edge.ConfigurationManager.Management"
+      - "specification/edge/Microsoft.Edge.Configurations.Management"
     exclude-tableview-properties:
       - Id
       - Type
